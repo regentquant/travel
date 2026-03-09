@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>活动菜单 — 从 Santa Clara 出发的7天自驾游</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@400;500;600&family=LXGW+WenKai+SC:wght@400;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@400;500;600&family=LXGW+WenKai+TC:wght@400;700&family=LXGW+WenKai+SC:wght@400;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'LXGW WenKai SC', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #FAFAF7; min-height: 100vh; }
+  body { font-family: 'LXGW WenKai TC', 'LXGW WenKai SC', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #FAFAF7; min-height: 100vh; }
 
   .header {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
@@ -19,13 +19,13 @@
     background-size: 60px 60px, 40px 40px;
   }
   .header-content { position: relative; z-index: 1; }
-  .header-sub { font-size: 14px; font-family: 'DM Sans', 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; letter-spacing: 3px; text-transform: uppercase; color: #E5B86F; margin-bottom: 12px; }
+  .header-sub { font-size: 14px; font-family: 'DM Sans', 'LXGW WenKai TC', 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; letter-spacing: 3px; text-transform: uppercase; color: #E5B86F; margin-bottom: 12px; }
   .header h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 900; margin: 0 0 8px; line-height: 1.15; letter-spacing: -0.5px; }
-  .header p { font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 15px; opacity: 0.7; max-width: 500px; margin: 0 auto; line-height: 1.6; }
+  .header p { font-family: 'LXGW WenKai TC', 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 15px; opacity: 0.7; max-width: 500px; margin: 0 auto; line-height: 1.6; }
 
   .filters { display: flex; justify-content: center; gap: 8px; padding: 20px 16px 8px; flex-wrap: wrap; }
   .filter-btn {
-    font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 600;
+    font-family: 'LXGW WenKai TC', 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 600;
     padding: 8px 18px; border-radius: 24px; border: 2px solid #ddd;
     background: #fff; color: #555; cursor: pointer; transition: all 0.2s;
   }
@@ -42,8 +42,8 @@
   .cat-header.open { border-radius: 16px 16px 0 0; }
   .cat-icon { font-size: 28px; }
   .cat-info { flex: 1; }
-  .cat-title { font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 19px; font-weight: 700; color: #1a1a2e; }
-  .cat-count { font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 13px; color: #888; margin-top: 2px; }
+  .cat-title { font-family: 'LXGW WenKai TC', 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 19px; font-weight: 700; color: #1a1a2e; }
+  .cat-count { font-family: 'LXGW WenKai TC', 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 13px; color: #888; margin-top: 2px; }
   .cat-arrow { font-size: 20px; transition: transform 0.25s ease; font-family: system-ui; }
   .cat-arrow.open { transform: rotate(90deg); }
 
@@ -55,20 +55,38 @@
     box-shadow: 0 1px 4px rgba(0,0,0,0.04); display: flex; gap: 12px; align-items: flex-start;
   }
   .drive-badge { width: 96px; flex-shrink: 0; text-align: center; padding-top: 2px; }
-  .drive-badge-inner { font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; border-radius: 8px; padding: 6px 8px; line-height: 1.2; }
+  .drive-badge-inner { font-family: 'LXGW WenKai TC', 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; border-radius: 8px; padding: 6px 8px; line-height: 1.2; }
   .item-content { flex: 1; min-width: 0; }
   .item-header { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .item-name { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: #1a1a2e; }
-  .item-name-cn { font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 500; color: #666; margin-left: 2px; }
+  .item-name-cn { font-family: 'LXGW WenKai TC', 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 500; color: #666; margin-left: 2px; }
   .item-rating { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; color: #F39C12; background: #FFF8E1; padding: 2px 7px; border-radius: 6px; }
   .item-price { font-family: 'DM Sans', sans-serif; font-size: 11px; color: #888; }
-  .item-desc { font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 13px; color: #666; margin-top: 3px; line-height: 1.5; }
-  .item-area { font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 12px; color: #999; margin-top: 2px; }
+  .item-desc { font-family: 'LXGW WenKai TC', 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 13px; color: #666; margin-top: 3px; line-height: 1.5; }
+  .item-area { font-family: 'LXGW WenKai TC', 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 12px; color: #999; margin-top: 2px; }
   .item-tags { display: flex; gap: 5px; margin-top: 6px; flex-wrap: wrap; }
-  .tag { font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 11px; font-weight: 500; border-radius: 6px; padding: 3px 8px; }
+  .tag { font-family: 'LXGW WenKai TC', 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 11px; font-weight: 500; border-radius: 6px; padding: 3px 8px; }
+
+  .ask-ai-btn {
+    font-family: 'LXGW WenKai TC', 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 11px; font-weight: 600;
+    color: #7C3AED; background: #F3EEFF; border: 1.5px solid #DDD6FE; border-radius: 8px;
+    padding: 4px 10px; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 4px;
+    margin-top: 6px;
+  }
+  .ask-ai-btn:hover { background: #EDE5FF; border-color: #7C3AED; }
+  .ask-ai-btn:active { transform: scale(0.96); }
+
+  .toast {
+    position: fixed; bottom: -80px; left: 50%; transform: translateX(-50%);
+    background: #1a1a2e; color: #fff; padding: 14px 22px; border-radius: 14px;
+    font-family: 'LXGW WenKai TC', 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 13px;
+    line-height: 1.6; box-shadow: 0 6px 24px rgba(0,0,0,0.18); z-index: 999;
+    transition: bottom 0.35s cubic-bezier(0.22,1,0.36,1); max-width: 340px; text-align: center;
+  }
+  .toast.show { bottom: 32px; }
 
   .footer-tip {
-    text-align: center; padding: 0 24px 40px; font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif;
+    text-align: center; padding: 0 24px 40px; font-family: 'LXGW WenKai TC', 'LXGW WenKai SC', 'Noto Sans SC', sans-serif;
     font-size: 13px; color: #aaa; max-width: 520px; margin: 0 auto; line-height: 1.7;
   }
 </style>
@@ -89,6 +107,7 @@
 <div class="footer-tip">
   💡 小贴士：把附近的活动组合起来。Monterey = 水族馆 + Cannery Row 美食 + 17-Mile Drive。Napa = 2–3个酒庄 + 野餐。Half Moon Bay = 海滩 + 海岸步道 + 海鲜。
 </div>
+<div class="toast" id="toast"></div>
 
 <script>
 const categories = [
@@ -188,6 +207,16 @@ const filterOptions = [
   { id:"far", label:"1小时+" },
 ];
 
+function askAI(name, cn, area, desc, drive) {
+  const prompt = `I'm planning to visit ${name}（${cn}），located in ${area}, about ${drive} drive from Santa Clara, CA.\n\nPlease give me a detailed travel guide, including:\n1. Best time to visit and how long to plan for\n2. Must-see highlights and hidden gems\n3. Practical tips (parking, tickets, what to bring)\n4. Nearby places I can combine in the same trip\n5. Any important things to watch out for\n\nPlease answer in Chinese.`;
+  navigator.clipboard.writeText(prompt).then(() => {
+    const t = document.getElementById("toast");
+    t.innerHTML = "✅ 已复制到剪贴板！<br>打开你的 AI 助手（ChatGPT、Claude 等），<br>粘贴即可获取详细攻略";
+    t.classList.add("show");
+    setTimeout(() => t.classList.remove("show"), 3500);
+  });
+}
+
 function driveColor(drive) {
   if (!drive) return "#999";
   const num = parseInt(drive);
@@ -248,7 +277,9 @@ function render() {
           <div class="item-area">📍 ${item.area}</div>
           <div class="item-tags">${item.tags.map(tag =>
             `<span class="tag" style="color:${cat.color};background:${cat.color}12">${tag}</span>`
-          ).join("")}</div>
+          ).join("")}
+            <button class="ask-ai-btn" onclick="event.stopPropagation();askAI('${item.name.replace(/'/g,"\\'")}','${item.cn.replace(/'/g,"\\'")}','${item.area.replace(/'/g,"\\'")}','${item.desc.replace(/'/g,"\\'")}','${(item.drive||"").replace(/'/g,"\\'")}')">🤖 问AI攻略</button>
+          </div>
         </div>
       </div>`;
     }).join("");
