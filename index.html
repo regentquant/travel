@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>活动菜单 — 从 Santa Clara 出发的7天自驾游</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@400;500;600&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@400;500;600&family=LXGW+WenKai+SC:wght@400;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'LXGW WenKai TC', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #FAFAF7; min-height: 100vh; }
+  body { font-family: 'LXGW WenKai SC', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #FAFAF7; min-height: 100vh; }
 
   .header {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
@@ -19,13 +19,13 @@
     background-size: 60px 60px, 40px 40px;
   }
   .header-content { position: relative; z-index: 1; }
-  .header-sub { font-size: 14px; font-family: 'DM Sans', 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; letter-spacing: 3px; text-transform: uppercase; color: #E5B86F; margin-bottom: 12px; }
+  .header-sub { font-size: 14px; font-family: 'DM Sans', 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; letter-spacing: 3px; text-transform: uppercase; color: #E5B86F; margin-bottom: 12px; }
   .header h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 900; margin: 0 0 8px; line-height: 1.15; letter-spacing: -0.5px; }
-  .header p { font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 15px; opacity: 0.7; max-width: 500px; margin: 0 auto; line-height: 1.6; }
+  .header p { font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 15px; opacity: 0.7; max-width: 500px; margin: 0 auto; line-height: 1.6; }
 
   .filters { display: flex; justify-content: center; gap: 8px; padding: 20px 16px 8px; flex-wrap: wrap; }
   .filter-btn {
-    font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 600;
+    font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 600;
     padding: 8px 18px; border-radius: 24px; border: 2px solid #ddd;
     background: #fff; color: #555; cursor: pointer; transition: all 0.2s;
   }
@@ -42,8 +42,8 @@
   .cat-header.open { border-radius: 16px 16px 0 0; }
   .cat-icon { font-size: 28px; }
   .cat-info { flex: 1; }
-  .cat-title { font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 19px; font-weight: 700; color: #1a1a2e; }
-  .cat-count { font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 13px; color: #888; margin-top: 2px; }
+  .cat-title { font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 19px; font-weight: 700; color: #1a1a2e; }
+  .cat-count { font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 13px; color: #888; margin-top: 2px; }
   .cat-arrow { font-size: 20px; transition: transform 0.25s ease; font-family: system-ui; }
   .cat-arrow.open { transform: rotate(90deg); }
 
@@ -55,20 +55,20 @@
     box-shadow: 0 1px 4px rgba(0,0,0,0.04); display: flex; gap: 12px; align-items: flex-start;
   }
   .drive-badge { width: 96px; flex-shrink: 0; text-align: center; padding-top: 2px; }
-  .drive-badge-inner { font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; border-radius: 8px; padding: 6px 8px; line-height: 1.2; }
+  .drive-badge-inner { font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; border-radius: 8px; padding: 6px 8px; line-height: 1.2; }
   .item-content { flex: 1; min-width: 0; }
   .item-header { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .item-name { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: #1a1a2e; }
-  .item-name-cn { font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 500; color: #666; margin-left: 2px; }
+  .item-name-cn { font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 500; color: #666; margin-left: 2px; }
   .item-rating { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; color: #F39C12; background: #FFF8E1; padding: 2px 7px; border-radius: 6px; }
   .item-price { font-family: 'DM Sans', sans-serif; font-size: 11px; color: #888; }
-  .item-desc { font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 13px; color: #666; margin-top: 3px; line-height: 1.5; }
-  .item-area { font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 12px; color: #999; margin-top: 2px; }
+  .item-desc { font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 13px; color: #666; margin-top: 3px; line-height: 1.5; }
+  .item-area { font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 12px; color: #999; margin-top: 2px; }
   .item-tags { display: flex; gap: 5px; margin-top: 6px; flex-wrap: wrap; }
-  .tag { font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 11px; font-weight: 500; border-radius: 6px; padding: 3px 8px; }
+  .tag { font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif; font-size: 11px; font-weight: 500; border-radius: 6px; padding: 3px 8px; }
 
   .footer-tip {
-    text-align: center; padding: 0 24px 40px; font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif;
+    text-align: center; padding: 0 24px 40px; font-family: 'LXGW WenKai SC', 'Noto Sans SC', sans-serif;
     font-size: 13px; color: #aaa; max-width: 520px; margin: 0 auto; line-height: 1.7;
   }
 </style>
@@ -93,25 +93,25 @@
 <script>
 const categories = [
   { id:"food", icon:"🍽", title:"美食餐厅", color:"#E8453C", bg:"#FFF5F4", items:[
-    { name:"JOEY Valley Fair", cn:"JOEY 餐厅", desc:"高级融合料理，牛排和鸡尾酒很棒", area:"Santa Clara", drive:"5分钟", rating:4.8, price:"$$", tags:["约会","融合菜"] },
-    { name:"Restaurant Gish", cn:"Gish 餐厅", desc:"韩式风格品鉴菜单，创意5道式晚餐", area:"Santa Clara", drive:"5分钟", rating:4.7, price:"$$$", tags:["精致餐饮","韩式融合"] },
+    { name:"JOEY Valley Fair", cn:"JOEY 餐厅", desc:"高级融合料理，牛排和鸡尾酒很棒", area:"Santa Clara", drive:"5分钟", rating:4.5, price:"$$-$$$", tags:["约会","融合菜"] },
+    { name:"Restaurant Gish", cn:"Gish 餐厅", desc:"韩式风格品鉴菜单，创意4道式晚餐", area:"Santa Clara", drive:"5分钟", rating:4.7, price:"$$$", tags:["精致餐饮","韩式融合"] },
     { name:"GIWA", cn:"GIWA 花房餐厅", desc:"花艺主题韩式融合餐厅，早午餐超热门", area:"Santa Clara", drive:"10分钟", rating:4.6, price:"$$", tags:["早午餐","网红打卡"] },
     { name:"Puesto", cn:"Puesto 墨西哥餐厅", desc:"高级墨西哥塔可和玛格丽特", area:"Santa Clara", drive:"10分钟", rating:4.5, price:"$$", tags:["墨西哥菜","休闲"] },
     { name:"Eataly", cn:"Eataly 意大利市集", desc:"意大利美食市集+餐厅，共3层", area:"Valley Fair", drive:"5分钟", rating:4.0, price:"$$", tags:["意大利菜","市集"] },
-    { name:"Cannery Row Restaurants", cn:"罐头厂街餐厅", desc:"Monterey 的海鲜和海景餐厅", area:"Monterey", drive:"1小时15分", rating:null, price:"$$", tags:["海鲜","海景"] },
-    { name:"Old Fisherman's Wharf", cn:"老渔人码头", desc:"蛤蜊浓汤、炸鱿鱼、海景", area:"Monterey", drive:"1小时15分", rating:null, price:"$$", tags:["海鲜","游客热门"] },
+    { name:"Cannery Row Restaurants", cn:"罐头厂街餐厅", desc:"Monterey 的海鲜和海景餐厅", area:"Monterey", drive:"1小时20分", rating:null, price:"$$", tags:["海鲜","海景"] },
+    { name:"Old Fisherman's Wharf", cn:"老渔人码头", desc:"蛤蜊浓汤、炸鱿鱼、海景", area:"Monterey", drive:"1小时20分", rating:null, price:"$$", tags:["海鲜","游客热门"] },
   ]},
 { id:"nature", icon:"🌲", title:"徒步与自然", color:"#2D7D46", bg:"#F2FAF5", items:[
     { name:"Henry Cowell Redwoods", cn:"亨利·考威尔红杉林", desc:"轻松0.8英里环形步道，穿越古老红杉", area:"Felton", drive:"45分钟", rating:4.8, price:"免费/$10停车", tags:["红杉","轻松"] },
-    { name:"Big Basin Redwoods", cn:"大盆地红杉林", desc:"壮观红杉，山顶可看海景", area:"Boulder Creek", drive:"55分钟", rating:4.8, price:"需预约停车", tags:["红杉","中等难度"] },
-    { name:"Castle Rock State Park", cn:"城堡岩州立公园", desc:"巨石攀岩，全景观景台", area:"Los Gatos", drive:"35分钟", rating:4.8, price:"免费/$10停车", tags:["攀岩","观景"] },
+    { name:"Big Basin Redwoods", cn:"大盆地红杉林", desc:"2020年火灾后恢复中，壮观红杉+山顶海景", area:"Boulder Creek", drive:"55分钟", rating:4.7, price:"$6-10/需预约", tags:["红杉","中等难度"] },
+    { name:"Castle Rock State Park", cn:"城堡岩州立公园", desc:"巨石攀岩，全景观景台", area:"Los Gatos", drive:"50分钟", rating:4.8, price:"免费/$10停车", tags:["攀岩","观景"] },
     { name:"Wilder Ranch State Park", cn:"怀尔德牧场州立公园", desc:"海岸悬崖、农场动物、蕨类洞穴", area:"Santa Cruz", drive:"50分钟", rating:4.8, price:"$10停车", tags:["海岸","亲子"] },
-    { name:"Forest of Nisene Marks", cn:"尼森马克斯森林", desc:"安静的红杉森林，溪边步道", area:"Aptos", drive:"55分钟", rating:4.8, price:"$8停车", tags:["宁静","溪边"] },
+    { name:"Forest of Nisene Marks", cn:"尼森马克斯森林", desc:"安静的红杉森林，溪边步道", area:"Aptos", drive:"55分钟", rating:4.7, price:"$8停车", tags:["宁静","溪边"] },
   ]},
   { id:"beach", icon:"🏖", title:"海滩与海岸", color:"#1A8FB5", bg:"#F0FAFE", items:[
-    { name:"Half Moon Bay State Beach", cn:"半月湾州立海滩", desc:"宽阔沙滩、海岸步道、野餐区", area:"Half Moon Bay", drive:"40分钟", rating:4.7, price:"$10停车", tags:["沙滩","亲子"] },
-    { name:"Poplar Beach", cn:"白杨海滩", desc:"可带狗、悬崖步道、丽思卡尔顿附近", area:"Half Moon Bay", drive:"40分钟", rating:4.7, price:"$10停车", tags:["可带狗","散步"] },
-    { name:"Gray Whale Cove", cn:"灰鲸湾", desc:"戏剧性悬崖阶梯，隐秘海湾", area:"Half Moon Bay", drive:"45分钟", rating:4.7, price:"免费", tags:["隐秘","风景"] },
+    { name:"Half Moon Bay State Beach", cn:"半月湾州立海滩", desc:"宽阔沙滩、海岸步道、野餐区", area:"Half Moon Bay", drive:"45分钟", rating:4.7, price:"$10停车", tags:["沙滩","亲子"] },
+    { name:"Poplar Beach", cn:"白杨海滩", desc:"可带狗、悬崖步道、海岸步道连接丽思卡尔顿", area:"Half Moon Bay", drive:"45分钟", rating:4.7, price:"$10停车", tags:["可带狗","散步"] },
+    { name:"Gray Whale Cove", cn:"灰鲸湾", desc:"戏剧性悬崖阶梯，隐秘海湾", area:"Montara", drive:"50分钟", rating:4.7, price:"免费", tags:["隐秘","风景"] },
     { name:"Natural Bridges State Beach", cn:"天然桥州立海滩", desc:"海蚀拱门、潮池、冬季帝王蝶", area:"Santa Cruz", drive:"50分钟", rating:4.7, price:"路边免费/$10停车场", tags:["潮池","标志性"] },
   ]},
   { id:"museum", icon:"🎨", title:"博物馆与文化", color:"#C76E1A", bg:"#FFF8F0", items:[
@@ -119,50 +119,50 @@ const categories = [
     { name:"de Young Museum", cn:"笛洋美术馆", desc:"艺术展+免费观景塔可俯瞰城市", area:"Golden Gate Park, SF", drive:"1小时", rating:4.6, price:"$15-20", tags:["艺术","观景"] },
     { name:"Asian Art Museum", cn:"亚洲艺术博物馆", desc:"跨越数千年的亚洲艺术与文化", area:"San Francisco", drive:"55分钟", rating:4.6, price:"$15-20", tags:["亚洲艺术","礼品店"] },
     { name:"Exploratorium", cn:"探索馆", desc:"互动科学博物馆，海湾景观，老少皆宜", area:"Pier 15, SF", drive:"1小时", rating:4.7, price:"$30-40", tags:["互动体验","科学"] },
-    { name:"California Academy of Sciences", cn:"加州科学院", desc:"水族馆+天文馆+热带雨林一馆三合一", area:"Golden Gate Park, SF", drive:"1小时", rating:4.6, price:"$35-45", tags:["水族馆","天文馆"] },
-    { name:"Computer History Museum", cn:"计算机历史博物馆", desc:"硅谷必去，从算盘到AI的计算史全览", area:"Mountain View", drive:"15分钟", rating:4.7, price:"$17.50", tags:["硅谷","科技史"] },
-    { name:"Rosicrucian Egyptian Museum", cn:"玫瑰十字会埃及博物馆", desc:"西海岸最大埃及文物收藏，含真实木乃伊", area:"San Jose", drive:"10分钟", rating:4.6, price:"$9-12", tags:["埃及","木乃伊"] },
+    { name:"California Academy of Sciences", cn:"加州科学院", desc:"水族馆+天文馆+热带雨林一馆三合一", area:"Golden Gate Park, SF", drive:"1小时", rating:4.6, price:"$39-55", tags:["水族馆","天文馆"] },
+    { name:"Computer History Museum", cn:"计算机历史博物馆", desc:"硅谷必去，从算盘到AI的计算史全览", area:"Mountain View", drive:"15分钟", rating:4.7, price:"$21.50", tags:["硅谷","科技史"] },
+    { name:"Rosicrucian Egyptian Museum", cn:"玫瑰十字会埃及博物馆", desc:"西海岸最大埃及文物收藏，含真实木乃伊", area:"San Jose", drive:"10分钟", rating:4.6, price:"$5-9", tags:["埃及","木乃伊"] },
     { name:"Cantor Arts Center", cn:"斯坦福坎特艺术中心", desc:"斯坦福大学免费美术馆，有罗丹雕塑花园", area:"Stanford", drive:"20分钟", rating:4.7, price:"免费", tags:["免费","罗丹雕塑"] },
-    { name:"San Jose Museum of Art", cn:"圣何塞艺术博物馆", desc:"当代艺术展览，建筑本身是历史地标", area:"San Jose", drive:"15分钟", rating:4.5, price:"$10-15", tags:["当代艺术","建筑"] },
+    { name:"San Jose Museum of Art", cn:"圣何塞艺术博物馆", desc:"当代艺术展览，建筑本身是历史地标", area:"San Jose", drive:"15分钟", rating:4.5, price:"$15-20", tags:["当代艺术","建筑"] },
     { name:"Legion of Honor", cn:"荣誉军团宫", desc:"仿巴黎宫殿的美术馆，欧洲古典艺术+金门大桥景", area:"Lincoln Park, SF", drive:"1小时10分", rating:4.7, price:"$15-20", tags:["古典艺术","金门景观"] },
-    { name:"Walt Disney Family Museum", cn:"华特·迪士尼家族博物馆", desc:"迪士尼生平展，动画原稿和微缩模型超精致", area:"Presidio, SF", drive:"1小时", rating:4.8, price:"$25-35", tags:["迪士尼","动画"] },
+    { name:"Walt Disney Family Museum", cn:"华特·迪士尼家族博物馆", desc:"迪士尼生平展，动画原稿和微缩模型超精致", area:"Presidio, SF", drive:"1小时", rating:4.8, price:"$15-30", tags:["迪士尼","动画"] },
     { name:"Hiller Aviation Museum", cn:"希勒航空博物馆", desc:"40+架真实飞机，含波音747机头和飞行模拟器", area:"San Carlos", drive:"25分钟", rating:4.6, price:"$14-22", tags:["航空","亲子"] },
     { name:"Cable Car Museum", cn:"缆车博物馆", desc:"免费参观运行中的缆车机械系统", area:"Nob Hill, SF", drive:"1小时", rating:4.6, price:"免费", tags:["免费","缆车"] },
     { name:"The Henry Miller Memorial Library", cn:"亨利·米勒纪念图书馆", desc:"大苏尔红杉林中的文艺小书店，不定期办活动", area:"Big Sur", drive:"2小时", rating:4.5, price:"免费", tags:["文艺","大苏尔"] },
   ]},
   { id:"attractions", icon:"🎢", title:"景点与娱乐", color:"#D4508B", bg:"#FFF5FA", items:[
-    { name:"Monterey Bay Aquarium", cn:"蒙特雷湾水族馆", desc:"世界著名水族馆，海獭、海藻林、水母", area:"Monterey", drive:"1小时15分", rating:4.6, price:"$55-65", tags:["必去","亲子"] },
+    { name:"Monterey Bay Aquarium", cn:"蒙特雷湾水族馆", desc:"世界著名水族馆，海獭、海藻林、水母", area:"Monterey", drive:"1小时15分", rating:4.6, price:"$50-65", tags:["必去","亲子"] },
     { name:"California's Great America", cn:"加州大美洲主题公园", desc:"过山车和水上乐园", area:"Santa Clara", drive:"5分钟", rating:4.3, price:"$45-75", tags:["游乐设施","水上乐园"] },
     { name:"Dennis the Menace Playground", cn:"淘气丹尼斯游乐场", desc:"传奇创意儿童游乐场", area:"Monterey", drive:"1小时15分", rating:4.7, price:"免费", tags:["儿童","免费"] },
-    { name:"Winchester Mystery House", cn:"温彻斯特神秘屋", desc:"迷宫般的维多利亚豪宅，楼梯通向天花板", area:"San Jose", drive:"10分钟", rating:4.5, price:"$42-55", tags:["诡异","历史"] },
+    { name:"Winchester Mystery House", cn:"温彻斯特神秘屋", desc:"迷宫般的维多利亚豪宅，楼梯通向天花板", area:"San Jose", drive:"10分钟", rating:4.5, price:"$39-55", tags:["诡异","历史"] },
     { name:"Santa Cruz Beach Boardwalk", cn:"圣克鲁斯海滩木栈道", desc:"加州最古老海滨游乐场，Giant Dipper过山车", area:"Santa Cruz", drive:"50分钟", rating:4.5, price:"免费入场/单项收费", tags:["游乐场","海滨"] },
-    { name:"Pier 39", cn:"39号码头", desc:"海狮、旋转木马、街头表演、恶魔岛渡轮出发点", area:"San Francisco", drive:"1小时", rating:4.3, price:"免费入场", tags:["海狮","游客热门"] },
-    { name:"Alcatraz Island", cn:"恶魔岛", desc:"传奇监狱岛屿游，含语音导览，需提前预约", area:"San Francisco", drive:"1小时+渡轮", rating:4.8, price:"$41-52", tags:["必去","提前预约"] },
+    { name:"Pier 39", cn:"39号码头", desc:"海狮、旋转木马、街头表演（恶魔岛渡轮在Pier 33）", area:"San Francisco", drive:"1小时", rating:4.3, price:"免费入场", tags:["海狮","游客热门"] },
+    { name:"Alcatraz Island", cn:"恶魔岛", desc:"传奇监狱岛屿游，含语音导览，需提前预约", area:"San Francisco", drive:"1小时+渡轮", rating:4.8, price:"$48-60", tags:["必去","提前预约"] },
     { name:"Mystery Spot", cn:"神秘点", desc:"重力似乎失灵的森林小屋，趣味十足", area:"Santa Cruz", drive:"50分钟", rating:4.3, price:"$10", tags:["趣味","亲子"] },
-    { name:"The Tech Interactive", cn:"科技互动博物馆", desc:"硅谷科技互动体验馆，IMAX巨幕影院", area:"San Jose", drive:"10分钟", rating:4.5, price:"$28-35", tags:["科技","互动体验"] },
+    { name:"The Tech Interactive", cn:"科技互动博物馆", desc:"硅谷科技互动体验馆，IMAX巨幕影院", area:"San Jose", drive:"10分钟", rating:4.5, price:"$28-36", tags:["科技","互动体验"] },
     { name:"San Jose Municipal Rose Garden", cn:"圣何塞市立玫瑰园", desc:"3500+株玫瑰，春末夏初盛开时最美", area:"San Jose", drive:"10分钟", rating:4.7, price:"免费", tags:["花园","免费"] },
-    { name:"Roaring Camp Railroads", cn:"咆哮营蒸汽火车", desc:"穿越红杉林的百年蒸汽火车，冬季有圣诞专列", area:"Felton", drive:"50分钟", rating:4.6, price:"$32-40", tags:["蒸汽火车","亲子"] },
+    { name:"Roaring Camp Railroads", cn:"咆哮营蒸汽火车", desc:"穿越红杉林的百年蒸汽火车，冬季有圣诞专列", area:"Felton", drive:"50分钟", rating:4.6, price:"$35-45", tags:["蒸汽火车","亲子"] },
     { name:"Golden Gate Bridge Walk", cn:"金门大桥步行", desc:"步行或骑车横跨金门大桥，全程1.7英里", area:"San Francisco", drive:"1小时", rating:4.9, price:"免费", tags:["必去","标志性"] },
     { name:"Ghirardelli Square", cn:"吉拉德利广场", desc:"巧克力工厂改建，免费巧克力试吃+海湾景", area:"San Francisco", drive:"1小时", rating:4.5, price:"免费入场", tags:["巧克力","海湾景"] },
   ]},
   { id:"scenic", icon:"📸", title:"风景自驾与观景点", color:"#3A5BA0", bg:"#F0F4FC", items:[
     { name:"Big Sur / Bixby Bridge", cn:"大苏尔 / 比克斯比大桥", desc:"标志性大桥、壮观悬崖、令人窒息的美景", area:"Big Sur", drive:"2小时", rating:4.8, price:"免费", tags:["标志性","摄影"] },
-    { name:"17-Mile Drive", cn:"17英里路", desc:"穿越 Pebble Beach 的海岸公路，可看孤柏", area:"Pacific Grove", drive:"1小时20分", rating:null, price:"$11.50/车", tags:["风景自驾","高尔夫"] },
+    { name:"17-Mile Drive", cn:"17英里路", desc:"穿越 Pebble Beach 的海岸公路，可看孤柏", area:"Pacific Grove", drive:"1小时20分", rating:null, price:"$12.25/车", tags:["风景自驾","高尔夫"] },
     { name:"Highway 1 Scenic Byway", cn:"1号公路风景道", desc:"壮丽太平洋海岸公路，多个观景停靠点", area:"Carmel → Big Sur", drive:"1小时30分+", rating:4.9, price:"免费", tags:["公路旅行","海岸"] },
-    { name:"Seal Beach Overlook", cn:"海豹海滩观景台", desc:"悬崖上观赏海豹，可能看到秃鹫", area:"Big Sur", drive:"2小时", rating:4.8, price:"免费", tags:["野生动物","轻松停靠"] },
+    { name:"Seal Beach Overlook", cn:"海豹海滩观景台", desc:"悬崖上观赏海豹，可能看到加州神鹫", area:"Big Sur", drive:"2小时", rating:4.8, price:"免费", tags:["野生动物","轻松停靠"] },
     { name:"Marin Headlands / Battery Spencer", cn:"马林岬角 / 斯宾塞炮台", desc:"俯瞰金门大桥最佳角度，日落绝美", area:"Sausalito", drive:"1小时10分", rating:4.9, price:"免费", tags:["金门大桥","日落"] },
     { name:"Hawk Hill", cn:"鹰丘观景台", desc:"马林岬角制高点，360度湾区全景", area:"Marin Headlands", drive:"1小时15分", rating:4.8, price:"免费", tags:["全景","摄影"] },
     { name:"Twin Peaks", cn:"双子峰", desc:"旧金山市中心最佳全景观景台，夜景超赞", area:"San Francisco", drive:"1小时", rating:4.6, price:"免费", tags:["城市全景","夜景"] },
-    { name:"Pigeon Point Lighthouse", cn:"鸽点灯塔", desc:"115英尺高历史灯塔，海岸步道可观鲸", area:"Pescadero", drive:"1小时", rating:4.7, price:"免费", tags:["灯塔","观鲸"] },
-    { name:"Mount Hamilton / Lick Observatory", cn:"汉密尔顿山 / 利克天文台", desc:"蜿蜒山路直达山顶天文台，湾区日落全景", area:"San Jose", drive:"45分钟", rating:4.6, price:"免费", tags:["天文台","山路自驾"] },
+    { name:"Pigeon Point Lighthouse", cn:"鸽点灯塔", desc:"115英尺高历史灯塔，海岸步道可观鲸", area:"Pescadero", drive:"1小时15分", rating:4.7, price:"免费", tags:["灯塔","观鲸"] },
+    { name:"Mount Hamilton / Lick Observatory", cn:"汉密尔顿山 / 利克天文台", desc:"蜿蜒山路直达山顶天文台，湾区日落全景", area:"San Jose", drive:"1小时", rating:4.6, price:"免费", tags:["天文台","山路自驾"] },
     { name:"Muir Beach Overlook", cn:"缪尔海滩观景台", desc:"悬崖上的二战碉堡遗址，海岸线壮观", area:"Muir Beach", drive:"1小时20分", rating:4.7, price:"免费", tags:["历史遗迹","海景"] },
-    { name:"Point Reyes Lighthouse", cn:"雷耶斯角灯塔", desc:"308级台阶下到灯塔，观鲸季必去", area:"Point Reyes", drive:"2小时", rating:4.8, price:"免费", tags:["灯塔","观鲸季"] },
+    { name:"Point Reyes Lighthouse", cn:"雷耶斯角灯塔", desc:"308级台阶下到灯塔，观鲸季必去", area:"Point Reyes", drive:"2小时30分+", rating:4.8, price:"免费", tags:["灯塔","观鲸季"] },
     { name:"Skyline Boulevard (Hwy 35)", cn:"天际线大道", desc:"山脊公路穿越红杉林，多个观景停靠点", area:"Woodside → Saratoga", drive:"20分钟起", rating:4.5, price:"免费", tags:["山脊公路","红杉"] },
     { name:"Shark Fin Cove", cn:"鲨鱼鳍湾", desc:"海中独立岩石形似鲨鱼鳍，隐秘海滩", area:"Davenport", drive:"1小时", rating:4.7, price:"免费", tags:["隐秘","奇石"] },
-    { name:"Pacifica Pier", cn:"帕西菲卡栈桥", desc:"伸入太平洋的长栈桥，雾中拍照超有感觉", area:"Pacifica", drive:"40分钟", rating:4.5, price:"免费", tags:["栈桥","雾景"] },
+    { name:"Pacifica Pier", cn:"帕西菲卡栈桥", desc:"伸入太平洋的长栈桥，雾中拍照超有感觉", area:"Pacifica", drive:"45分钟", rating:4.5, price:"免费", tags:["栈桥","雾景"] },
   ]},
   { id:"shopping", icon:"🛍", title:"购物与市集", color:"#6B5B3E", bg:"#FAF8F4", items:[
-    { name:"Gilroy Premium Outlets", cn:"吉尔罗伊奥特莱斯", desc:"60+品牌店，最高6折优惠", area:"Gilroy", drive:"35分钟", rating:4.3, price:"不等", tags:["奥莱","折扣"] },
+    { name:"Gilroy Premium Outlets", cn:"吉尔罗伊奥特莱斯", desc:"145+品牌店，低至35折优惠", area:"Gilroy", drive:"40分钟", rating:4.0, price:"不等", tags:["奥莱","折扣"] },
     { name:"Santana Row", cn:"桑塔纳街", desc:"高端户外购物、餐饮、娱乐", area:"San Jose", drive:"10分钟", rating:null, price:"不等", tags:["高端","餐饮"] },
     { name:"Mountain View Farmers Market", cn:"山景城农夫市集", desc:"大型周日市集，有现场音乐和新鲜蔬果", area:"Mountain View", drive:"15分钟", rating:4.7, price:"免费入场", tags:["仅周日","新鲜"] },
     { name:"California Ave Farmers Market", cn:"加州大道农夫市集", desc:"Palo Alto 周日市集，面包和有机蔬果", area:"Palo Alto", drive:"20分钟", rating:4.7, price:"免费入场", tags:["仅周日","有机"] },
@@ -170,7 +170,7 @@ const categories = [
     { name:"Stanford Shopping Center", cn:"斯坦福购物中心", desc:"露天高端购物中心，紧邻斯坦福大学", area:"Palo Alto", drive:"20分钟", rating:4.5, price:"不等", tags:["高端","露天"] },
     { name:"San Francisco Chinatown", cn:"旧金山唐人街", desc:"北美最古老唐人街，年货、茶叶、中药、小吃", area:"San Francisco", drive:"1小时", rating:4.5, price:"不等", tags:["中国城","特色小店"] },
     { name:"San Francisco Japantown", cn:"旧金山日本城", desc:"日本超市、拉面、和果子、动漫周边", area:"San Francisco", drive:"1小时", rating:4.4, price:"不等", tags:["日本文化","美食"] },
-    { name:"San Pedro Square Market", cn:"圣佩德罗广场市集", desc:"室内美食广场+酒吧，周末有现场音乐", area:"San Jose", drive:"15分钟", rating:4.4, price:"不等", tags:["美食广场","夜生活"] },
+    { name:"San Pedro Square Market", cn:"圣佩德罗广场市集", desc:"美食广场+酒吧，有户外区域，周末有现场音乐", area:"San Jose", drive:"15分钟", rating:4.4, price:"不等", tags:["美食广场","夜生活"] },
     { name:"Great Mall", cn:"大商场奥特莱斯", desc:"室内奥特莱斯，200+店铺，雨天购物好去处", area:"Milpitas", drive:"15分钟", rating:4.2, price:"不等", tags:["奥莱","室内"] },
     { name:"Half Moon Bay Main Street", cn:"半月湾主街", desc:"小镇风情，独立书店、画廊、手工艺品店", area:"Half Moon Bay", drive:"40分钟", rating:4.5, price:"不等", tags:["小镇","文艺"] },
     { name:"Capitola Village", cn:"卡皮托拉小镇", desc:"彩色威尼斯风滨海小镇，精品店和冰淇淋", area:"Capitola", drive:"50分钟", rating:4.6, price:"不等", tags:["彩色小镇","海滨"] },
