@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>活动菜单 — 从 Santa Clara 出发的7天自驾游</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@400;500;600&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'LXGW WenKai TC', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #FAFAF7; min-height: 100vh; }
+
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #fff; padding: 48px 24px 40px; text-align: center; position: relative; overflow: hidden;
+  }
+  .header-stars {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.06;
+    background-image: radial-gradient(circle at 20% 50%, #fff 1px, transparent 1px), radial-gradient(circle at 80% 20%, #fff 1px, transparent 1px);
+    background-size: 60px 60px, 40px 40px;
+  }
+  .header-content { position: relative; z-index: 1; }
+  .header-sub { font-size: 14px; font-family: 'DM Sans', 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; letter-spacing: 3px; text-transform: uppercase; color: #E5B86F; margin-bottom: 12px; }
+  .header h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 900; margin: 0 0 8px; line-height: 1.15; letter-spacing: -0.5px; }
+  .header p { font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 15px; opacity: 0.7; max-width: 500px; margin: 0 auto; line-height: 1.6; }
+
+  .filters { display: flex; justify-content: center; gap: 8px; padding: 20px 16px 8px; flex-wrap: wrap; }
+  .filter-btn {
+    font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 600;
+    padding: 8px 18px; border-radius: 24px; border: 2px solid #ddd;
+    background: #fff; color: #555; cursor: pointer; transition: all 0.2s;
+  }
+  .filter-btn.active { border-color: #1a1a2e; background: #1a1a2e; color: #fff; }
+
+  .categories { max-width: 720px; margin: 0 auto; padding: 12px 16px 60px; }
+  .category { margin-bottom: 12px; }
+
+  .cat-header {
+    width: 100%; display: flex; align-items: center; gap: 14px; padding: 18px 20px;
+    background: #fff; border: 2px solid #eee; border-radius: 16px;
+    cursor: pointer; transition: all 0.25s ease; text-align: left;
+  }
+  .cat-header.open { border-radius: 16px 16px 0 0; }
+  .cat-icon { font-size: 28px; }
+  .cat-info { flex: 1; }
+  .cat-title { font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 19px; font-weight: 700; color: #1a1a2e; }
+  .cat-count { font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 13px; color: #888; margin-top: 2px; }
+  .cat-arrow { font-size: 20px; transition: transform 0.25s ease; font-family: system-ui; }
+  .cat-arrow.open { transform: rotate(90deg); }
+
+  .cat-items { border-top: none; border-radius: 0 0 16px 16px; padding: 4px 12px 12px; display: none; }
+  .cat-items.open { display: block; }
+
+  .item {
+    background: #fff; border-radius: 12px; padding: 14px 16px; margin-top: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04); display: flex; gap: 12px; align-items: flex-start;
+  }
+  .drive-badge { width: 96px; flex-shrink: 0; text-align: center; padding-top: 2px; }
+  .drive-badge-inner { font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 700; border-radius: 8px; padding: 6px 8px; line-height: 1.2; }
+  .item-content { flex: 1; min-width: 0; }
+  .item-header { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .item-name { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: #1a1a2e; }
+  .item-name-cn { font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 13px; font-weight: 500; color: #666; margin-left: 2px; }
+  .item-rating { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; color: #F39C12; background: #FFF8E1; padding: 2px 7px; border-radius: 6px; }
+  .item-price { font-family: 'DM Sans', sans-serif; font-size: 11px; color: #888; }
+  .item-desc { font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 13px; color: #666; margin-top: 3px; line-height: 1.5; }
+  .item-area { font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 12px; color: #999; margin-top: 2px; }
+  .item-tags { display: flex; gap: 5px; margin-top: 6px; flex-wrap: wrap; }
+  .tag { font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif; font-size: 11px; font-weight: 500; border-radius: 6px; padding: 3px 8px; }
+
+  .footer-tip {
+    text-align: center; padding: 0 24px 40px; font-family: 'LXGW WenKai TC', 'Noto Sans SC', sans-serif;
+    font-size: 13px; color: #aaa; max-width: 520px; margin: 0 auto; line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-stars"></div>
+  <div class="header-content">
+    <div class="header-sub">从 Santa Clara 出发 · 7天自驾游</div>
+    <h1>你的活动菜单</h1>
+    <p>所有景点都在2小时车程内。挑你喜欢的去，不想去的跳过。没有固定行程。</p>
+  </div>
+</div>
+
+<div class="filters" id="filters"></div>
+<div class="categories" id="categories"></div>
+<div class="footer-tip">
+  💡 小贴士：把附近的活动组合起来。Monterey = 水族馆 + Cannery Row 美食 + 17-Mile Drive。Napa = 2–3个酒庄 + 野餐。Half Moon Bay = 海滩 + 海岸步道 + 海鲜。
+</div>
+
+<script>
+const categories = [
+  { id:"food", icon:"🍽", title:"美食餐厅", color:"#E8453C", bg:"#FFF5F4", items:[
+    { name:"JOEY Valley Fair", cn:"JOEY 餐厅", desc:"高级融合料理，牛排和鸡尾酒很棒", area:"Santa Clara", drive:"5分钟", rating:4.8, price:"$$", tags:["约会","融合菜"] },
+    { name:"Restaurant Gish", cn:"Gish 餐厅", desc:"韩式风格品鉴菜单，创意5道式晚餐", area:"Santa Clara", drive:"5分钟", rating:4.7, price:"$$$", tags:["精致餐饮","韩式融合"] },
+    { name:"GIWA", cn:"GIWA 花房餐厅", desc:"花艺主题韩式融合餐厅，早午餐超热门", area:"Santa Clara", drive:"10分钟", rating:4.6, price:"$$", tags:["早午餐","网红打卡"] },
+    { name:"Puesto", cn:"Puesto 墨西哥餐厅", desc:"高级墨西哥塔可和玛格丽特", area:"Santa Clara", drive:"10分钟", rating:4.5, price:"$$", tags:["墨西哥菜","休闲"] },
+    { name:"Eataly", cn:"Eataly 意大利市集", desc:"意大利美食市集+餐厅，共3层", area:"Valley Fair", drive:"5分钟", rating:4.0, price:"$$", tags:["意大利菜","市集"] },
+    { name:"Cannery Row Restaurants", cn:"罐头厂街餐厅", desc:"Monterey 的海鲜和海景餐厅", area:"Monterey", drive:"1小时15分", rating:null, price:"$$", tags:["海鲜","海景"] },
+    { name:"Old Fisherman's Wharf", cn:"老渔人码头", desc:"蛤蜊浓汤、炸鱿鱼、海景", area:"Monterey", drive:"1小时15分", rating:null, price:"$$", tags:["海鲜","游客热门"] },
+  ]},
+{ id:"nature", icon:"🌲", title:"徒步与自然", color:"#2D7D46", bg:"#F2FAF5", items:[
+    { name:"Henry Cowell Redwoods", cn:"亨利·考威尔红杉林", desc:"轻松0.8英里环形步道，穿越古老红杉", area:"Felton", drive:"45分钟", rating:4.8, price:"免费/$10停车", tags:["红杉","轻松"] },
+    { name:"Big Basin Redwoods", cn:"大盆地红杉林", desc:"壮观红杉，山顶可看海景", area:"Boulder Creek", drive:"55分钟", rating:4.8, price:"需预约停车", tags:["红杉","中等难度"] },
+    { name:"Castle Rock State Park", cn:"城堡岩州立公园", desc:"巨石攀岩，全景观景台", area:"Los Gatos", drive:"35分钟", rating:4.8, price:"免费/$10停车", tags:["攀岩","观景"] },
+    { name:"Wilder Ranch State Park", cn:"怀尔德牧场州立公园", desc:"海岸悬崖、农场动物、蕨类洞穴", area:"Santa Cruz", drive:"50分钟", rating:4.8, price:"$10停车", tags:["海岸","亲子"] },
+    { name:"Forest of Nisene Marks", cn:"尼森马克斯森林", desc:"安静的红杉森林，溪边步道", area:"Aptos", drive:"55分钟", rating:4.8, price:"$8停车", tags:["宁静","溪边"] },
+  ]},
+  { id:"beach", icon:"🏖", title:"海滩与海岸", color:"#1A8FB5", bg:"#F0FAFE", items:[
+    { name:"Half Moon Bay State Beach", cn:"半月湾州立海滩", desc:"宽阔沙滩、海岸步道、野餐区", area:"Half Moon Bay", drive:"40分钟", rating:4.7, price:"$10停车", tags:["沙滩","亲子"] },
+    { name:"Poplar Beach", cn:"白杨海滩", desc:"可带狗、悬崖步道、丽思卡尔顿附近", area:"Half Moon Bay", drive:"40分钟", rating:4.7, price:"$10停车", tags:["可带狗","散步"] },
+    { name:"Gray Whale Cove", cn:"灰鲸湾", desc:"戏剧性悬崖阶梯，隐秘海湾", area:"Half Moon Bay", drive:"45分钟", rating:4.7, price:"免费", tags:["隐秘","风景"] },
+    { name:"Natural Bridges State Beach", cn:"天然桥州立海滩", desc:"海蚀拱门、潮池、冬季帝王蝶", area:"Santa Cruz", drive:"50分钟", rating:4.7, price:"路边免费/$10停车场", tags:["潮池","标志性"] },
+  ]},
+  { id:"museum", icon:"🎨", title:"博物馆与文化", color:"#C76E1A", bg:"#FFF8F0", items:[
+    { name:"SF Museum of Modern Art", cn:"旧金山现代艺术博物馆", desc:"7层现代与当代艺术", area:"San Francisco", drive:"55分钟", rating:4.6, price:"$25-30", tags:["现代艺术","世界级"] },
+    { name:"de Young Museum", cn:"笛洋美术馆", desc:"艺术展+免费观景塔可俯瞰城市", area:"Golden Gate Park, SF", drive:"1小时", rating:4.6, price:"$15-20", tags:["艺术","观景"] },
+    { name:"Asian Art Museum", cn:"亚洲艺术博物馆", desc:"跨越数千年的亚洲艺术与文化", area:"San Francisco", drive:"55分钟", rating:4.6, price:"$15-20", tags:["亚洲艺术","礼品店"] },
+    { name:"Exploratorium", cn:"探索馆", desc:"互动科学博物馆，海湾景观，老少皆宜", area:"Pier 15, SF", drive:"1小时", rating:4.7, price:"$30-40", tags:["互动体验","科学"] },
+    { name:"California Academy of Sciences", cn:"加州科学院", desc:"水族馆+天文馆+热带雨林一馆三合一", area:"Golden Gate Park, SF", drive:"1小时", rating:4.6, price:"$35-45", tags:["水族馆","天文馆"] },
+  ]},
+  { id:"attractions", icon:"🎢", title:"景点与娱乐", color:"#D4508B", bg:"#FFF5FA", items:[
+    { name:"Monterey Bay Aquarium", cn:"蒙特雷湾水族馆", desc:"世界著名水族馆，海獭、海藻林、水母", area:"Monterey", drive:"1小时15分", rating:4.6, price:"$55-65", tags:["必去","亲子"] },
+    { name:"California's Great America", cn:"加州大美洲主题公园", desc:"过山车和水上乐园", area:"Santa Clara", drive:"5分钟", rating:4.3, price:"$45-75", tags:["游乐设施","水上乐园"] },
+    { name:"Dennis the Menace Playground", cn:"淘气丹尼斯游乐场", desc:"传奇创意儿童游乐场", area:"Monterey", drive:"1小时15分", rating:4.7, price:"免费", tags:["儿童","免费"] },
+  ]},
+  { id:"scenic", icon:"📸", title:"风景自驾与观景点", color:"#3A5BA0", bg:"#F0F4FC", items:[
+    { name:"Big Sur / Bixby Bridge", cn:"大苏尔 / 比克斯比大桥", desc:"标志性大桥、壮观悬崖、令人窒息的美景", area:"Big Sur", drive:"2小时", rating:4.8, price:"免费", tags:["标志性","摄影"] },
+    { name:"17-Mile Drive", cn:"17英里路", desc:"穿越 Pebble Beach 的海岸公路，可看孤柏", area:"Pacific Grove", drive:"1小时20分", rating:null, price:"$11.50/车", tags:["风景自驾","高尔夫"] },
+    { name:"Highway 1 Scenic Byway", cn:"1号公路风景道", desc:"壮丽太平洋海岸公路，多个观景停靠点", area:"Carmel → Big Sur", drive:"1小时30分+", rating:4.9, price:"免费", tags:["公路旅行","海岸"] },
+    { name:"Seal Beach Overlook", cn:"海豹海滩观景台", desc:"悬崖上观赏海豹，可能看到秃鹫", area:"Big Sur", drive:"2小时", rating:4.8, price:"免费", tags:["野生动物","轻松停靠"] },
+  ]},
+  { id:"shopping", icon:"🛍", title:"购物与市集", color:"#6B5B3E", bg:"#FAF8F4", items:[
+    { name:"Gilroy Premium Outlets", cn:"吉尔罗伊奥特莱斯", desc:"60+品牌店，最高6折优惠", area:"Gilroy", drive:"35分钟", rating:4.3, price:"不等", tags:["奥莱","折扣"] },
+    { name:"Santana Row", cn:"桑塔纳街", desc:"高端户外购物、餐饮、娱乐", area:"San Jose", drive:"10分钟", rating:null, price:"不等", tags:["高端","餐饮"] },
+    { name:"Mountain View Farmers Market", cn:"山景城农夫市集", desc:"大型周日市集，有现场音乐和新鲜蔬果", area:"Mountain View", drive:"15分钟", rating:4.7, price:"免费入场", tags:["仅周日","新鲜"] },
+    { name:"California Ave Farmers Market", cn:"加州大道农夫市集", desc:"Palo Alto 周日市集，面包和有机蔬果", area:"Palo Alto", drive:"20分钟", rating:4.7, price:"免费入场", tags:["仅周日","有机"] },
+  ]},
+];
+
+let activeCategory = null;
+let currentFilter = "all";
+
+const filterOptions = [
+  { id:"all", label:"全部" },
+  { id:"close", label:"< 30分钟" },
+  { id:"mid", label:"30–60分钟" },
+  { id:"far", label:"1小时+" },
+];
+
+function driveColor(drive) {
+  if (!drive) return "#999";
+  const num = parseInt(drive);
+  if (drive.includes("小时")) return "#C0392B";
+  if (num <= 15) return "#27AE60";
+  if (num <= 45) return "#F39C12";
+  return "#E67E22";
+}
+
+function matchesFilter(drive) {
+  if (currentFilter === "all") return true;
+  if (!drive) return currentFilter === "far";
+  const num = parseInt(drive);
+  const hasHr = drive.includes("小时");
+  if (currentFilter === "close") return !hasHr && num < 30;
+  if (currentFilter === "mid") return !hasHr && num >= 30 && num <= 60;
+  if (currentFilter === "far") return hasHr || num > 60;
+  return true;
+}
+
+function setFilter(id) {
+  currentFilter = id;
+  activeCategory = null;
+  render();
+}
+
+function toggleCategory(id) {
+  activeCategory = activeCategory === id ? null : id;
+  render();
+}
+
+function render() {
+  const filtersEl = document.getElementById("filters");
+  filtersEl.innerHTML = filterOptions.map(f =>
+    `<button class="filter-btn${currentFilter === f.id ? ' active' : ''}" onclick="setFilter('${f.id}')">${f.label}</button>`
+  ).join("");
+
+  const catsEl = document.getElementById("categories");
+  catsEl.innerHTML = categories.map(cat => {
+    const filtered = cat.items.filter(item => matchesFilter(item.drive));
+    if (filtered.length === 0) return "";
+    const isOpen = activeCategory === cat.id;
+
+    const itemsHTML = filtered.map(item => {
+      const dc = driveColor(item.drive);
+      return `<div class="item">
+        <div class="drive-badge">
+          <div class="drive-badge-inner" style="color:${dc};background:${dc}14">🚗 ${item.drive}</div>
+        </div>
+        <div class="item-content">
+          <div class="item-header">
+            <span class="item-name">${item.name}</span>
+            <span class="item-name-cn">${item.cn}</span>
+            ${item.rating ? `<span class="item-rating">★ ${item.rating}</span>` : ""}
+            ${item.price ? `<span class="item-price">${item.price}</span>` : ""}
+          </div>
+          <div class="item-desc">${item.desc}</div>
+          <div class="item-area">📍 ${item.area}</div>
+          <div class="item-tags">${item.tags.map(tag =>
+            `<span class="tag" style="color:${cat.color};background:${cat.color}12">${tag}</span>`
+          ).join("")}</div>
+        </div>
+      </div>`;
+    }).join("");
+
+    return `<div class="category">
+      <button class="cat-header${isOpen ? ' open' : ''}" onclick="toggleCategory('${cat.id}')"
+        style="background:${isOpen ? cat.bg : '#fff'};border-color:${isOpen ? cat.color + '40' : '#eee'}">
+        <span class="cat-icon">${cat.icon}</span>
+        <div class="cat-info">
+          <div class="cat-title">${cat.title}</div>
+          <div class="cat-count">${filtered.length} 个选择</div>
+        </div>
+        <span class="cat-arrow${isOpen ? ' open' : ''}" style="color:${cat.color}">›</span>
+      </button>
+      <div class="cat-items${isOpen ? ' open' : ''}" style="background:${cat.bg};border:2px solid ${cat.color}40">
+        ${itemsHTML}
+      </div>
+    </div>`;
+  }).join("");
+}
+
+render();
+</script>
+</body>
+</html>
